@@ -1,0 +1,66 @@
+import java.util.*;
+class Main {
+  static class node{
+    int data;
+    node next;
+    node(int x){
+      data=x;
+      next=null;
+    }
+  }
+  static node add(node head1,int x){
+    node temp=new node(x);
+    if(head1==null){
+      head1=temp;
+    }
+    node thead=head1;
+    while(thead.next!=null){
+      thead=thead.next;
+    }
+    thead.next=temp;
+    return head1;
+  }
+
+ 
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n1=sc.nextInt();
+        node head1=new node(-1);
+        node head2=new node(-1);
+        for(int i=0;i<n1;i++){
+          head1=add(head1,sc.nextInt());
+        }
+        head1=head1.next;
+        
+        int n2=sc.nextInt();
+        for(int i=0;i<n2;i++){
+          head2=add(head2,sc.nextInt());
+          }
+          head2=head2.next;
+          int num1=0;
+          int num2=0;
+            node temp=head1;
+            while(temp!=null){
+            num1=num1*10+temp.data;
+            temp=temp.next;
+          }
+          
+            temp=head2;
+            while(temp!=null){
+            num2=num2*10+temp.data;
+            temp=temp.next;
+          }
+          int a=num1+num2;
+          List<Integer> al=new ArrayList<Integer>();
+          while(a>0){
+            int rem=a%10;
+            a=a/10;
+            al.add(rem);
+          }
+          for(int i=al.size()-1;i>=0;i--){
+            System.out.print(al.get(i)+" ");
+          }
+          
+   
+    }
+}
